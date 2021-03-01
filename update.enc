@@ -1,0 +1,27 @@
+<?php
+$new=mysqli_connect("localhost","root","","customer");
+echo "CONGRATULAIONS!YOU WIL RECIEVE A MAIL AS SOON AS POSIIBLE";
+if(!$new)
+{
+echo "UNABLE TO CONNECT";
+exit;
+}
+$fname=$_GET['fname'];
+$email=$_GET['email'];
+$city=$_GET['city'];
+$travelers=$_GET['travelers'];
+$state=$_GET['state'];
+$card=$_GET['card'];
+$expmonth=$_GET['expmonth'];
+$expyear=$_GET['expyear'];
+$cvv=$_GET['cvv'];
+$query="update customer set email='$email',city='$city',travelers='$travelers',state='$state',card='$card',expmonth='$expmonth',expyear='$expyear',cvv='$cvv' where fname='$fname'";
+/*$query="update customer set city='$city' where fname='$fname'";
+$query="update customer set travelers='$travelers' where fname='$fname'";
+$query="update customer set state='$state' where fname='$fname'";
+$query="update customer set card='$card' where fname='$fname'";
+$query="update customer set expmonth='$expmonth' where fname='$fname'";
+$query="update customer set expyear='$expyear' where fname='$fname'";
+$query="update customer set cvv='$cvv' where fname='$fname'";*/
+mysqli_query($new,$query) or die(mysql_error());
+?>
